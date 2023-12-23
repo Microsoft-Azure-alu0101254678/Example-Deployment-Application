@@ -8,6 +8,22 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+  <script>
+    // Puedes agregar algún código JavaScript si es necesario
+    console.log('El frontend está cargado.');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Realizar una solicitud al backend cuando la página se haya cargado
+      fetch('https://example-nodejs-express.azurewebsites.net/')
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+      }).catch(error => {
+          console.error('Error al obtener datos del backend:', error);
+        });
+      });
+  </script>
+  <p>hola</p>
   <app-root></app-root>
 </body>
 </html>
