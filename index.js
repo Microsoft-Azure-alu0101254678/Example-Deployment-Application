@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 let messagge = "";
 
@@ -15,6 +16,7 @@ mongoose.connect(mongoURI, {
   });
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 // Ruta principal para verificar la conexión y realizar la conexión a la base de datos
