@@ -11,6 +11,31 @@ mongoose.connect(mongoURI, {
 }).then(() => {
     console.log('Conexión exitosa a Azure Cosmos DB');
     messagge = 'Conexión exitosa a Azure Cosmos DB';
+
+    // Definir el esquema de tu documento
+    const mySchema = new mongoose.Schema({
+      name: String,
+      age: Number,
+      email: String
+    });
+
+    // Crear el modelo para tu documento
+    const myModel = mongoose.model('Persona', mySchema);
+
+    // Insertar un primer documento (opcional)
+    const firstDocument = new myModel({
+        name: 'John Doe',
+        age: 30,
+        email: 'john.doe@example.com'
+    });
+
+    firstDocument.save()
+      .then(result => {
+              console.log('Primer documento insertado:', result);
+      })
+      .catch(err => {
+        console.error('Error al insertar el primer documento:', err);
+      });
   }).catch((error) => {
     console.error('Error de conexión a Azure Cosmos DB:', error);
   });
